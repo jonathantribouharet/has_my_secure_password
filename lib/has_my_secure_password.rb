@@ -3,15 +3,19 @@ module ActiveRecord::Acts::HasMySecurePassword
 
   def self.included(klass)
 		klass.class_eval do
+			class_attribute :has_my_secure_password_field
+			self.has_my_secure_password_field = :email
 			extend(ClassMethods)
 		end
   end
 
 	module ClassMethods
 		
-		def has_my_secure_password(options = {:presence => true})
+		def has_my_secure_password(options = {:presence => true}, &block)			
 			require 'bcrypt'
 			include ActiveRecord::Acts::HasMySecurePassword::InstanceMethods
+			
+			yield self if block_given?
 			
 			attr_reader :password
 			
@@ -21,6 +25,10 @@ module ActiveRecord::Acts::HasMySecurePassword
 				def self.attributes_protected_by_default
 					super + ['password_digest']
 				end
+			end
+
+			def self.authenticate(email, password)
+				send('find_by_' + self.has_my_secure_password_field.to_s, email, password).try(:authenticate, password) || false
 			end
 
 		end
