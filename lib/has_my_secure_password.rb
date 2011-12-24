@@ -10,7 +10,7 @@ module ActiveRecord::Acts::HasMySecurePassword
 	module ClassMethods
 		
 		def has_my_secure_password(options = {:presence => true})
-			include BCrypt
+			require 'bcrypt'
 			include ActiveRecord::Acts::HasMySecurePassword::InstanceMethods
 			
 			attr_reader :password
@@ -52,7 +52,7 @@ ActiveRecord::Base.send(:include, ActiveRecord::Acts::HasMySecurePassword)
 module ActiveRecord; module ConnectionAdapters; end; end
 module ActiveRecord::ConnectionAdapters::HasMySecurePasswordTableDefinition
 	
-	def password(options = {})
+	def password(options = {:null => false})
 		column :password_digest, :string, options
 	end
 	
