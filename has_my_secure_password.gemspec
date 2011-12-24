@@ -12,5 +12,5 @@ Gem::Specification.new do |s|
 	s.author = "Jonathan TRIBOUHARET"
 	s.email = "jonathan.tribouharet@gmail.com"
 	
-	s.add_runtime_dependency('bcrypt')
+	s.add_runtime_dependency('bcrypt-ruby')
 end

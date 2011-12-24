@@ -1,4 +1,4 @@
-ActsAsUID
+has_my_secure_password
 ======================
 
 A plugin for generates unique UID for ActiveRecord model.
@@ -8,7 +8,7 @@ Installation
 
 Include the gem in your Gemfile:
 
-    gem 'acts_as_uid', :git => 'https://github.com/eviljojo22/acts_as_uid'
+    gem 'has_my_secure_password', :git => 'https://github.com/eviljojo22/has_my_secure_password'
 
 
 Usage
@@ -19,9 +19,8 @@ In your migrations:
 	class CreateUsers < ActiveRecord::Migration
 		def self.up
 			create_table :users do |t|
-				t.string :uid, :null => false
+				t.password :null => false
 			end
-			add_index :users, :uid, :uniq => true
 		end
 	end
 	
@@ -29,7 +28,7 @@ In your migrations:
 Minimal configuration in your model:
 	
 	class User < ActiveRecord::Base
-		acts_as_uid
+		has_my_secure_password
 	end
 
 Custom configuration in your model:
