@@ -48,7 +48,7 @@ Custom configuration in your model:
 		end
 	end
 
-The options passed to `has_my_secure_password` are used for `password_digest` field.
+The options passed to `has_my_secure_password` are used for `password_digest` field, by default `{:presence => true}`.
 `password_digest` field is in `attributes_protected_by_default` for counteract mass-assignment.
 `has_my_secure_password_field` is the field used by `authenticate` class method, by default it's `email`.
 
