@@ -21,7 +21,7 @@ module ActiveRecord::Acts::HasMySecurePassword
 			
 			validates :password_digest, options
 		
-			if respond_to?(:attributes_protected_by_default)
+			if respond_to?(:attributes_protected_by_default, true)
 				def self.attributes_protected_by_default
 					super + ['password_digest']
 				end
