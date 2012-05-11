@@ -19,6 +19,7 @@ In your migrations:
 	class CreateUsers < ActiveRecord::Migration
 		def self.up
 			create_table :users do |t|
+				t.string :email, :null => false
 				t.password
 			end
 		end
@@ -29,6 +30,7 @@ Custom migration:
 	class CreateUsers < ActiveRecord::Migration
 		def self.up
 			create_table :users do |t|
+				t.string :email, :null => false
 				t.password null => false
 			end
 		end

@@ -1,7 +1,7 @@
 module ActiveRecord; module ConnectionAdapters; end; end
 module ActiveRecord::ConnectionAdapters::HasMySecurePasswordTableDefinition
 	
-	def password(options = {:null => false})
+	def password(options = {})
 		column :password_digest, :string, options
 	end
 	
