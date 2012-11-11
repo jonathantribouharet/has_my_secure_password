@@ -4,7 +4,9 @@ module ActiveRecord::Acts::HasMySecurePassword
   def self.included(klass)
 		klass.class_eval do
 			class_attribute :has_my_secure_password_field
+			class_attribute :has_my_secure_password_dowmcase
 			self.has_my_secure_password_field = :email
+			self.has_my_secure_password_dowmcase = true
 			extend(ClassMethods)
 		end
   end
@@ -24,6 +26,9 @@ module ActiveRecord::Acts::HasMySecurePassword
 			attr_protected :password_digest
 
 			def self.authenticate(email, password)
+				if has_my_secure_password_dowmcase
+					email = email.to_s.downcase
+				end
 				send('find_by_' + self.has_my_secure_password_field.to_s, email, password).try(:authenticate, password) || false
 			end
 
@@ -43,7 +48,7 @@ module ActiveRecord::Acts::HasMySecurePassword
 
 		def password=(new_password)
 			@password = new_password
-      self.password_digest = BCrypt::Password.create(@password) if !@password.blank?
+      		self.password_digest = BCrypt::Password.create(@password) if !@password.blank?
 		end	
 		
 	end	
