@@ -26,7 +26,7 @@ module ActiveRecord::Acts::HasMySecurePassword
 			attr_protected :password_digest
 
 			def self.authenticate(email, password)
-				if has_my_secure_password_dowmcase
+				if self.has_my_secure_password_dowmcase?
 					email = email.to_s.downcase
 				end
 				send('find_by_' + self.has_my_secure_password_field.to_s, email, password).try(:authenticate, password) || false
