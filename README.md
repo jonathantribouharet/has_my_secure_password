@@ -1,7 +1,7 @@
 has_my_secure_password
 ======================
 
-A plugin for implement secure password authentication in your model.
+A plugin for implement secure password authentication in your model with bcrypt.
 
 Installation
 ------------
@@ -51,12 +51,12 @@ Custom configuration in your model:
 	end
 
 The options passed to `has_my_secure_password` are used for `password_digest` field, by default `{:presence => true}`.
-`password_digest` field is in `attributes_protected_by_default` for counteract mass-assignment.
+`password_digest` field is protected for counteract mass-assignment with `attr_protected`.
 `has_my_secure_password_field` is the field used by `authenticate` class method, by default it's `email`.
 
 For know if the password is good for a user
 
-	user = User.first.authenticate(password)
+	user = User.find(1).authenticate(password)
 	if user
 		flash[:notice] = 'Good password'
 	else
