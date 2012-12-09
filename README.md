@@ -8,7 +8,7 @@ Installation
 
 Include the gem in your Gemfile:
 
-    gem 'has_my_secure_password', :git => 'https://github.com/eviljojo22/has_my_secure_password'
+    gem 'has_my_secure_password', :git => 'https://github.com/jonathantribouharet/has_my_secure_password'
 
 
 Usage

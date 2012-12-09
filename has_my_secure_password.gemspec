@@ -5,7 +5,7 @@ Gem::Specification.new do |s|
 	s.name = "has_my_secure_password"
 	s.platform = Gem::Platform::RUBY
 	s.summary = "A plugin for implement secure password authentication in your model with bcrypt."
-	s.homepage = "https://github.com/eviljojo22/has_my_secure_password"
+	s.homepage = "https://github.com/jonathantribouharet/has_my_secure_password"
 	s.require_paths = ["lib"]
 	s.version = "1.0"
 	s.author = "Jonathan TRIBOUHARET"
