@@ -56,8 +56,7 @@ The options passed to `has_my_secure_password` are used for `password_digest` fi
 
 For know if the password is good for a user
 
-	user = User.find(1).authenticate(password)
-	if user
+	if @user.authenticate(password)
 		flash[:notice] = 'Good password'
 	else
 		flash[:notice] = 'Bad password'
