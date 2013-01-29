@@ -31,7 +31,7 @@ Custom migration:
 		def self.up
 			create_table :users do |t|
 				t.string :email, :null => false
-				t.password null => false
+				t.password :null => false
 			end
 		end
 	end
