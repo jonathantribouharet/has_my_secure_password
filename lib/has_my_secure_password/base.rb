@@ -26,7 +26,7 @@ module ActiveRecord::Acts::HasMySecurePassword
 			end
 
 			def self.authenticate(email, password)
-				send('find_by_' + self.has_my_secure_password_field.to_s, email, password).try(:authenticate, password) || false
+				self.where(self.has_my_secure_password_field.to_s => email).first.try(:authenticate, password) || false
 			end
 
 		end
