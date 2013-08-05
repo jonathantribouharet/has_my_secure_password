@@ -21,7 +21,9 @@ module ActiveRecord::Acts::HasMySecurePassword
 			
 			validates :password_digest, options
 			
-			attr_protected :password_digest
+			if self.methods.include?(:attr_protected) # For Mongoid
+				attr_protected :password_digest
+			end
 
 			def self.authenticate(email, password)
 				send('find_by_' + self.has_my_secure_password_field.to_s, email, password).try(:authenticate, password) || false
